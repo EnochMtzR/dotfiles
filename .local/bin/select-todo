@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+todoOptions=$(echo "personal work" | tr " " "\n")
+selected=$(echo -e "$todoOptions" | fzf)
+
+echo "~/notes/$selected/ToDo.md"

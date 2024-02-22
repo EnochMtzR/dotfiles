@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+homeFolders=$(find ~ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
+projectFolders=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
+configFolders=$(find ~/dotfiles/.config -mindepth 1 -maxdepth 1 -type d)
+localBinFolder=/home/$(whoami)/dotfiles/.local/bin
+coursesFolders=$(find ~/courses -mindepth 3 -maxdepth 3 -type d -not -path "*/\.*")
+personalNotesFolders=$(find ~/notes/personal/ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
+workNotesFolders=$(find ~/notes/work/ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
+
+folders=$(echo -e "$homeFolders\n$projectFolders\n$configFolders\n$localBinFolder\n$coursesFolders\n$personalNotesFolders\n$workNotesFolders")
+
+session=$(echo -e "$folders" | fzf)
+session_name=$(basename "$session" | tr . _)
+tmux_is_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_is_running ]]; then
+    tmux new-session -s "$session_name" -c "$session"
+    exit 0
+fi
+
+if ! tmux has-session -t "$session_name" 2> /dev/null; then
+    tmux new-session -s "$session_name" -c "$session" -d
+fi
+
+tmux switch-client -t "$session_name"
+ 
