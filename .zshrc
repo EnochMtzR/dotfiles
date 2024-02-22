@@ -131,7 +131,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # Created by `pipx` on 2023-06-21 15:57:23
     export PATH="$PATH:/home/$(whoami)/.local/bin:/Users/$(whoami)/.local/bin:/usr/local/go/bin"

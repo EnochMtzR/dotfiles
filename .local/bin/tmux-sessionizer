@@ -3,7 +3,7 @@
 homeFolders=$(find ~ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 projectFolders=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 configFolders=$(find ~/dotfiles/.config -mindepth 1 -maxdepth 1 -type d)
-localBinFolder=/home/$(whoami)/dotfiles/.local/bin
+localBinFolder="$HOME/dotfiles/.local/bin"
 personalNotesFolders=$(find ~/notes/personal/ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 workNotesFolders=$(find ~/notes/work/ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 
