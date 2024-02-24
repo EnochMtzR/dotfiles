@@ -20,11 +20,11 @@ function steeef_is_ahead_or_behind {
         ahead=$(echo $remoteStatus | cut -f2)
         behind=$(echo $remoteStatus | cut -f1)
         if [[ $ahead -gt 0 && $behind -gt 0 ]]; then
-            echo -n "%{$yellow%}↑$ahead %{$orange%}↓$behind${PR_RST}"
+            echo -n "%{$yellow%}⇡$ahead %{$orange%}⇣$behind${PR_RST}"
         elif [[ $ahead -gt 0 ]]; then
-            echo -n "%{$yellow%}↑$ahead${PR_RST}"
+            echo -n "%{$yellow%}⇡$ahead${PR_RST}"
         elif [[ $behind -gt 0 ]]; then
-            echo -n "%{$limegreen%}↓$behind${PR_RST}"
+            echo -n "%{$limegreen%}⇣$behind${PR_RST}"
         fi
     fi
 }
