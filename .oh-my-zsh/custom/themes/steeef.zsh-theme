@@ -15,7 +15,7 @@ function virtualenv_info {
 PR_GIT_UPDATE=1
 
 function steeef_is_ahead_or_behind {
-    remoteStatus=$(git rev-list --left-right --count origin/$(git rev-parse --abbrev-ref HEAD)...HEAD 2>/dev/null)
+    remoteStatus=$(git rev-list --left-right --count origin/$(git rev-parse --abbrev-ref HEAD 2> /dev/null)...HEAD 2>/dev/null)
     if [[ -n "$remoteStatus" ]]; then
         ahead=$(echo $remoteStatus | cut -f2)
         behind=$(echo $remoteStatus | cut -f1)
