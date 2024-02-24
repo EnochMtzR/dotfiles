@@ -14,6 +14,21 @@ function virtualenv_info {
 }
 PR_GIT_UPDATE=1
 
+function steeef_is_ahead_or_behind {
+    remoteStatus=$(git rev-list --left-right --count origin/$(git rev-parse --abbrev-ref HEAD)...HEAD 2>/dev/null)
+    if [[ -n "$remoteStatus" ]]; then
+        ahead=$(echo $remoteStatus | cut -f2)
+        behind=$(echo $remoteStatus | cut -f1)
+        if [[ $ahead -gt 0 && $behind -gt 0 ]]; then
+            echo -n "%{$yellow%}↑$ahead %{$orange%}↓$behind${PR_RST}"
+        elif [[ $ahead -gt 0 ]]; then
+            echo -n "%{$yellow%}↑$ahead${PR_RST}"
+        elif [[ $behind -gt 0 ]]; then
+            echo -n "%{$limegreen%}↓$behind${PR_RST}"
+        fi
+    fi
+}
+
 setopt prompt_subst
 
 autoload -U add-zsh-hook
@@ -37,7 +52,7 @@ else
 fi
 
 # enable VCS systems you use
-zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' enable git
 
 # check-for-changes can be really slow.
 # you should disable it, if you work with large repositories
@@ -86,11 +101,13 @@ add-zsh-hook chpwd steeef_chpwd
 function steeef_precmd {
     if [[ -n "$PR_GIT_UPDATE" ]] ; then
         # check for untracked files or updated submodules, since vcs_info doesn't
+        remoteStatus=$(steeef_is_ahead_or_behind)
+
         if git ls-files --other --exclude-standard 2> /dev/null | grep -q "."; then
             PR_GIT_UPDATE=1
-            FMT_BRANCH="on %{$limegreen%} %b ${PR_RST}[%u%c%{$hotpink%}●${PR_RST}]"
+            FMT_BRANCH="on %{$limegreen%} %b ${PR_RST}[%u%c%{$hotpink%}●${PR_RST}${remoteStatus}]"
         else
-            FMT_BRANCH="on %{$limegreen%} %b ${PR_RST}[%u%c${PR_RST}]"
+            FMT_BRANCH="on %{$limegreen%} %b ${PR_RST}[%u%c${PR_RST}${remoteStatus}]"
         fi
         zstyle ':vcs_info:*:prompt:*' formats "${FMT_BRANCH} "
 
@@ -99,6 +116,7 @@ function steeef_precmd {
     fi
 }
 add-zsh-hook precmd steeef_precmd
+add-zsh-hook precmd steeef_is_ahead_or_behind
 
 PROMPT=$'
 %{$purple%}%n${PR_RST} at %{$yellow%}%m${PR_RST} in %{$blue%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
