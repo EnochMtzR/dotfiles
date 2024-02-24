@@ -118,6 +118,8 @@ alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gpl="git pull"
 alias gps="git push"
+alias gpu="git push -u origin"
+alias gpf="git push --force-with-lease"
 alias gi="git init"
 alias gcl="git clone"
 alias gl="git log"
@@ -141,3 +143,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # key bindings 
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^w "tmux-windowizer\n"

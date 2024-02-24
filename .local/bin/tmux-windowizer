@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ -z $TMUX ]] && [[ -z $tmux_is_running ]]; then
+    echo "This script should be run from a tmux session or when tmux is running."
+    exit 0
+fi
+
 homeFolders=$(find ~ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 projectFolders=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 configFolders=$(find ~/dotfiles/.config -mindepth 1 -maxdepth 1 -type d)
@@ -16,23 +21,13 @@ fi
 
 folders=$(echo -e "$homeFolders\n$projectFolders\n$configFolders\n$localBinFolder\n$personalNotesFolders\n$workNotesFolders\n$coursesFolders")
 
-session=$(echo -e "$folders" | fzf)
+window=$(echo -e "$folders" | fzf)
 
-if [[ -z $session ]]; then
+if [[ -z $window ]]; then
     exit 0
 fi
 
-session_name=$(basename "$session" | tr . _)
 tmux_is_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_is_running ]]; then
-    tmux new-session -s "$session_name" -c "$session"
-    exit 0
-fi
 
-if ! tmux has-session -t "$session_name" 2> /dev/null; then
-    tmux new-session -s "$session_name" -c "$session" -d
-fi
-
-tmux switch-client -t "$session_name"
- 
+tmux new-window -c "$window"
