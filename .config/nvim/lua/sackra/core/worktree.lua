@@ -1,6 +1,5 @@
 function change_worktree()
     local is_bare_repo = vim.fn.system("git rev-parse --git-dir"):find(".git") == nil
-    local current_dir = vim.cmd('pwd')
     local worktrees = vim.tbl_map(function(worktree_line)
         local path_elements = vim.split(worktree_line, "/")
         return {worktree_line, path_elements[#path_elements]}
