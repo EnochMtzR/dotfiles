@@ -118,6 +118,18 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig["angularls"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        require("roslyn").setup({
+            log_level = "info",
+            dotnet_cmd = "dotnet",
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,

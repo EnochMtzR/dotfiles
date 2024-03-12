@@ -14,7 +14,7 @@ return {
 			view = {
 				width = 30,
 				relativenumber = true
-			}
+			},
 		})
 
 		local keymap = vim.keymap

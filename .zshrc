@@ -136,7 +136,7 @@ export NVM_DIR="$HOME/.nvm"
 # source <(ng completion script)
 
 # Created by `pipx` on 2023-06-21 15:57:23
-    export PATH="$PATH:/home/$(whoami)/.local/bin:/Users/$(whoami)/.local/bin:/usr/local/go/bin"
+    export PATH="$PATH:/home/$(whoami)/.local/bin:/Users/$(whoami)/.local/bin:/usr/local/go/bin:/home/sackra/go/bin"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

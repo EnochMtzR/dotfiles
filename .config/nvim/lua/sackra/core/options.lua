@@ -12,6 +12,13 @@ opt.expandtab = true
 
 opt.smartindent = true
 
+opt.wrap = false
+
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
+
 opt.hlsearch = false
 opt.incsearch = true
 
@@ -22,5 +29,7 @@ opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 
 opt.colorcolumn = "80"
+
+vim.opt.updatetime = 50
 
 opt.cursorline = true
