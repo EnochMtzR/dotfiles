@@ -28,6 +28,7 @@ keymap.set("n", "n", "nzzzv", { desc = "keep search selection in the middle when
 keymap.set("n", "N", "Nzzzv", { desc = "keep search selection in the middle when searching" })
 
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { silent= true, desc = "Open tmux sessionizer" })
+keymap.set("n", "<C-w>", "<cmd>silent !tmux neww tmux-windowizer<CR>", { silent= true, desc = "Open tmux windowizer" })
 
 keymap.set("n", "<leader>x", "<cmd>silent !chmod +x %<CR>", { silent= true, desc = "Make file executable" })
 
