@@ -27,22 +27,12 @@ keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Control + u but always centered" }
 keymap.set("n", "n", "nzzzv", { desc = "keep search selection in the middle when searching" })
 keymap.set("n", "N", "Nzzzv", { desc = "keep search selection in the middle when searching" })
 
-keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { silent= true, desc = "Open tmux sessionizer" })
-keymap.set("n", "<leader>w", "<cmd>silent !tmux neww tmux-windowizer<CR>", { silent= true, desc = "Open tmux windowizer" })
+keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { silent = true, desc = "Open tmux sessionizer" })
+keymap.set("n", "<leader>w", "<cmd>silent !tmux neww tmux-windowizer<CR>", { silent = true, desc = "Open tmux windowizer" })
 
 keymap.set("n", "<leader>x", "<cmd>silent !chmod +x %<CR>", { silent= true, desc = "Make file executable" })
 
--- Open bottom terminal and set input mode
-keymap.set("n", "<leader>t", function()
-	vim.cmd("belowright sp")
-	vim.cmd("resize 10")
-	vim.cmd("terminal")
-	vim.cmd("startinsert!")
-end, { desc = "Open terminal in horizontal split"})
-
-keymap.set("t", "<C-q>", function()
-	vim.api.nvim_input("<C-\\><C-n>")
-	vim.cmd("q")
-end, { desc = "Close terminal in terminal mode" })
+--keymap.set("n", "<leader>e", "<cmd>NvimTreeOpen<CR>", {desc = "Toggle file explorer"})
+keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFile<CR>", {desc = "Toggle file explorer on current file" })
 
 keymap.set("n", "Q", "<nop>")

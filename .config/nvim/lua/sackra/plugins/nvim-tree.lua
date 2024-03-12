@@ -16,11 +16,5 @@ return {
 				relativenumber = true
 			},
 		})
-
-		local keymap = vim.keymap
-
-		keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", {desc = "Toggle file explorer" })
-		keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", {desc = "Toggle file explorer on current file" })
-		keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", {desc = "Toggle file explorer on current file" })
 	end,
 }
