@@ -10,9 +10,8 @@ keymap.set("v", "<leader>]", "c[]<Esc>Pf]", { desc = "Surround selection in brac
 keymap.set("v", "<leader>{", "c{}<Esc>Pf}%", { desc = "Surround selection in braces and set cursor at beginning" })
 keymap.set("v", "<leader>}", "c{}<Esc>Pf}", { desc = "Surround selection in braces and set cursor at end" })
 
-keymap.set("n", "<leader>y", "\"+y", { desc = "Yank to clipboard" })
+keymap.set("n", "<leader>y", "\"+y", { desc = "Yank to clipboard with motions" })
 keymap.set("v", "<leader>y", "\"+y", { desc = "Yank to clipboard" })
-keymap.set("n", "<leader>Y", "\"+y", { desc = "Yank to clipboard" })
 
 keymap.set("n", "<leader>d", "\"_d", { desc = "delete without afecting paste buffer" })
 keymap.set("v", "<leader>d", "\"_d", { desc = "delete without afecting paste buffer" })
@@ -32,7 +31,9 @@ keymap.set("n", "<leader>w", "<cmd>silent !tmux neww tmux-windowizer<CR>", { sil
 
 keymap.set("n", "<leader>x", "<cmd>silent !chmod +x %<CR>", { silent= true, desc = "Make file executable" })
 
---keymap.set("n", "<leader>e", "<cmd>NvimTreeOpen<CR>", {desc = "Toggle file explorer"})
 keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFile<CR>", {desc = "Toggle file explorer on current file" })
+
+keymap.set("n", "<C-j>", "<cmd>cnext<CR>", { desc = "Next quickfix" })
+keymap.set("n", "<C-k>", "<cmd>cprev<CR>", { desc = "Next quickfix" })
 
 keymap.set("n", "Q", "<nop>")

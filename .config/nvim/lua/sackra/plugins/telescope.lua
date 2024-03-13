@@ -28,6 +28,6 @@ return {
 		keymap.set("n", "<leader>pf", "<cmd>Telescope find_files<cr>", { desc = "Find files in cwd" })
 		keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Find files in cwd" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string in cwd" })
+		keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Find word in cwd" })
 	end
 }

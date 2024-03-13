@@ -34,7 +34,7 @@ return {
         end
 
         keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "git status" })
-        keymap.set("n", "<leader>gd", vim.cmd.Gdiff, { desc = "git diff" })
+        keymap.set("n", "<leader>gd", vim.cmd.Gvdiffsplit, { desc = "git diff" })
         keymap.set("n", "<leader>Gd", "<cmd>G diff<cr>", { desc = "git diff" })
         keymap.set("n", "<leader>gl", "<cmd>G log<cr>", { desc = "git log" })
         keymap.set("n", "<leader>gcd", function () commit_git_diff(false) end, { desc = "git file diff for commit" })
