@@ -1,4 +1,4 @@
 return {
     'towolf/vim-helm',
-	"folke/which-key.nvim"
+	"folke/which-key.nvim",
 }

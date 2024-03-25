@@ -41,7 +41,7 @@ return {
 			keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
 			opts.desc = "Show line diagnostics"
-			keymap.set("n", "<leader>d", function ()
+			keymap.set("n", "<leader>i", function ()
 				vim.diagnostic.open_float();
 				vim.diagnostic.open_float();
 			end, opts)
@@ -50,14 +50,48 @@ return {
 			keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 			opts.desc = "Show documentation for what is under the cursor"
-			keymap.set("n", "<leader>h", function()
-				-- call twice to focus window
+
+            vim.api.nvim_create_augroup( "lsphover", {} )
+
+            keymap.set("n", "<leader>hf", function()
+                local cursor = vim.api.nvim_win_get_cursor(0)
+
+                vim.cmd("execute 'normal F(h'")
+
+                vim.lsp.buf.hover()
+                vim.lsp.buf.hover()
+
+                vim.api.nvim_create_autocmd("WinLeave",
+                    {
+                        group = "lsphover",
+                        desc = "On hover window closed",
+                        pattern = "*",
+                        callback = function()
+                            vim.api.nvim_win_set_cursor(0, cursor)
+
+                            vim.cmd("au! lsphover")
+                        end,
+                    })
+
+
+            end, opts)
+
+            keymap.set("n", "<leader>ho", function()
+                -- call twice to focus window
 				vim.lsp.buf.hover();
 				vim.lsp.buf.hover();
 
-				vim.defer_fn(function ()
-					vim.cmd('norm! j') -- move cursor down to prevent the header from showing
-				end, 30)
+                vim.api.nvim_create_autocmd("WinEnter",
+                    {
+                        group = "lsphover",
+                        desc = "On hover window open",
+                        pattern = "*",
+                        callback = function()
+                            vim.cmd("execute 'normal j'")
+
+                            vim.cmd("au! lsphover")
+                        end,
+                    })
 			end, opts)
 
 			opts.desc = "Restart LSP"
@@ -86,6 +120,17 @@ return {
 		lspconfig["gopls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+            cmd = { "gopls" },
+            filetypes = { "go", "gomod", "gowork", "gotmpl" },
+            root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                },
+            },
 		})
 
 		lspconfig["rust_analyzer"].setup({
@@ -104,6 +149,11 @@ return {
         })
 
         lspconfig["html"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        lspconfig["emmet_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
