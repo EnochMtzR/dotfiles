@@ -32,7 +32,7 @@ return {
 				"git_rebase",
 				"gitcommit",
 				"gitignore",
-				"markdown",
+				"markdown_inline",
 				"sql"
 			},
 			sync_install = false,

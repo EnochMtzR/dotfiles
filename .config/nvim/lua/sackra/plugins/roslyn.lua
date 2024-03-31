@@ -1,3 +1,3 @@
 return {
-    "jmederosalvarado/roslyn.nvim",
+    "EnochMtzR/roslyn.nvim",
 }
