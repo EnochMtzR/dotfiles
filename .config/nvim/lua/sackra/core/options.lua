@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+vim.cmd.highlight('DiagnosticUnderlineError guisp=#ff0000 gui=undercurl')
+
 opt.number = true
 opt.relativenumber = true
 

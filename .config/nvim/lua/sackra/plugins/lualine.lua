@@ -3,11 +3,13 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
         local lualine = require('lualine')
+        local vscode_theme = require('lualine.themes.vscode')
 
         lualine.setup {
             options = {
-                section_separators = { left = '', right = '' },
-                component_separators = { left = '|', right = '|' },
+                -- section_separators = { left = '', right = '' },
+                -- component_separators = { left = '|', right = '|' },
+                theme = vscode_theme,
             },
         }
     end

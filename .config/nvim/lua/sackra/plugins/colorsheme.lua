@@ -1,19 +1,16 @@
 return {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	priority = 1000,
+	"Mofiqul/vscode.nvim",
 	config = function()
-        local catppuccin = require("catppuccin")
+        vim.o.background = "dark";
 
-        catppuccin.setup({
-            flavour = "mocha",
-            dim_inactive = {
-                enabled = true,
-                shade = "dark",
-                percentage = 0.30,
-            },
+        local vscode = require('vscode')
+
+        vscode.setup({
+            italic_comments = true,
+            underline_links = true,
+            disable_nvim_tree_bg = true,
         })
 
-		vim.cmd.colorscheme "catppuccin"
+        vscode.load()
 	end
 }
