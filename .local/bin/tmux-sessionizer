@@ -4,6 +4,7 @@ homeFolders=$(find ~ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 projectFolders=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 configFolders=$(find ~/dotfiles/.config -mindepth 1 -maxdepth 1 -type d)
 localBinFolder="$HOME/dotfiles/.local/bin"
+nvimPluginsFolder=$(find ~/.local/share/nvim/lazy/ -mindepth 1 -maxdepth 1 -type d)
 personalNotesFolders=$(find ~/notes/personal/ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 workNotesFolders=$(find ~/notes/work/ -mindepth 1 -maxdepth 1 -type d -not -path "*/\.*")
 
@@ -14,7 +15,7 @@ else
 fi
 
 
-folders=$(echo -e "$homeFolders\n$projectFolders\n$configFolders\n$localBinFolder\n$personalNotesFolders\n$workNotesFolders\n$coursesFolders")
+folders=$(echo -e "$homeFolders\n$projectFolders\n$configFolders\n$localBinFolder\n$nvimPluginsFolder\n$personalNotesFolders\n$workNotesFolders\n$coursesFolders")
 
 session=$(echo -e "$folders" | fzf)
 

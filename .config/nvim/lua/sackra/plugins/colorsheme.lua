@@ -1,5 +1,5 @@
 return {
-	"Mofiqul/vscode.nvim",
+	"EnochMtzR/vscode.nvim",
 	config = function()
         vim.o.background = "dark";
 
