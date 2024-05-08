@@ -1,8 +1,8 @@
 local api = vim.api
 
 api.nvim_create_autocmd(
-    {"BufEnter", "BufRead"},
+    { "BufEnter", "BufRead" },
     {
-        pattern = {"*.component.html"},
+        pattern = { "*.component.html" },
         command = "set filetype=angular"
     })
