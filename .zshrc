@@ -148,3 +148,7 @@ export NVM_DIR="$HOME/.nvm"
 # key bindings 
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^w "tmux-windowizer\n"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/joseenocmartinezrojas/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
