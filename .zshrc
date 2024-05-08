@@ -131,6 +131,8 @@ alias gc="git commit"
 alias gcm="git commit -m"
 alias grmc="git rm --cached"
 
+alias set-deel-codeArtifact-auth-token-for-shared-account="export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain npm --domain-owner 974360507615 --profile shared --region eu-west-1 --query authorizationToken --output text`"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -152,3 +154,12 @@ bindkey -s ^w "tmux-windowizer\n"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/joseenocmartinezrojas/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Add libpq to path
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# Other libpq necessary exports
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+
+
