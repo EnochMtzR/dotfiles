@@ -41,7 +41,7 @@ map <C-M-l> <Action>(NextTab)
 map <C-M-h> <Action>(PreviousTab)
 map <leader>pf <Action>(GotoFile)
 map <leader>fs <Action>(FindInPath)
-map <leader>vc :vs .ideavimrc<CR>
+map <leader>vc :vs ~/.ideavimrc<CR>
 map <leader>h <Action>(QuickJavaDoc)
 map <leader>i <Action>(ShowErrorDescription)
 map <leader>ca <Action>(ShowIntentionActions)
