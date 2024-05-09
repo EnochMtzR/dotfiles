@@ -59,7 +59,7 @@ xnoremap <leader>p \"_dP
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
-keymap.set("n", "<leader>h", vim.lsp.buf.hover)
+keymap.set("n", "<leader>ho", vim.lsp.buf.hover)
 "" Map \r to the Reformat Code action
 "map \r <Action>(ReformatCode)
 
