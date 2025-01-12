@@ -151,6 +151,12 @@ export NVM_DIR="$HOME/.nvm"
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^w "tmux-windowizer\n"
 
+# Add opt to path
+
+for dir in $(find /opt -type d); do
+  PATH="$dir:$PATH"
+done
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/joseenocmartinezrojas/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
