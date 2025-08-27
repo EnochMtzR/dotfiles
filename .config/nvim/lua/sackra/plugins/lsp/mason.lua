@@ -23,11 +23,11 @@ return {
                 "clangd",
                 "cmake",
                 "ts_ls",
-                "gopls",
                 "rust_analyzer",
                 "lua_ls",
                 "helm_ls",
                 "pylsp",
+                "angularls",
             },
             automatic_installation = true,
         })

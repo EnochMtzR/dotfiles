@@ -115,21 +115,26 @@ return {
             on_attach = on_attach,
         })
 
-        lspconfig["gopls"].setup({
+        lspconfig["angularls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            cmd = { "gopls" },
-            filetypes = { "go", "gomod", "gowork", "gotmpl" },
-            root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
-            settings = {
-                gopls = {
-                    analyses = {
-                        unusedparams = true,
-                    },
-                    staticcheck = true,
-                },
-            },
         })
+
+        --lspconfig["gopls"].setup({
+        --    capabilities = capabilities,
+        --    on_attach = on_attach,
+        --    cmd = { "gopls" },
+        --    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        --    root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+        --    settings = {
+        --        gopls = {
+        --            analyses = {
+        --                unusedparams = true,
+        --            },
+        --            staticcheck = true,
+        --        },
+        --    },
+        --})
 
         lspconfig["rust_analyzer"].setup({
             capabilities = capabilities,
@@ -151,7 +156,7 @@ return {
             on_attach = on_attach,
         })
 
-        lspconfig["emmet_ls"].setup({
+        lspconfig["emmet_language_server"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
@@ -162,11 +167,6 @@ return {
         })
 
         lspconfig["bashls"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-        })
-
-        lspconfig["angularls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
