@@ -46,7 +46,7 @@ keymap.set("n", "<leader>so", function()
     vim.cmd.source(initFile)
 end, { desc = "Source init.lua" })
 
-keymap.set("n", "<C-q>", ":q<CR>", { desc = "Quit" })
+keymap.set("n", "<C-q>", ":bd!<CR>", { desc = "Quit" })
 
 keymap.set("n", "<A-k>", "<C-w>+", { desc = "Increase window height" })
 keymap.set("n", "<A-j>", "<C-w>-", { desc = "Decrease window height" })
