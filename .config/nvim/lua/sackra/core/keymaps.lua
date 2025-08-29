@@ -48,6 +48,11 @@ end, { desc = "Source init.lua" })
 
 keymap.set("n", "<C-q>", ":bd!<CR>", { desc = "Quit" })
 
+keymap.set("n", "<C-A-k>", "<cmd>wincmd k<CR>", { desc = "Move to upper window" })
+keymap.set("n", "<C-A-j>", "<cmd>wincmd j<CR>", { desc = "Move to lower window" })
+keymap.set("n", "<C-A-h>", "<cmd>wincmd h<CR>", { desc = "Move to left window" })
+keymap.set("n", "<C-A-l>", "<cmd>wincmd l<CR>", { desc = "Move to right window" })
+
 keymap.set("n", "<A-k>", "<C-w>+", { desc = "Increase window height" })
 keymap.set("n", "<A-j>", "<C-w>-", { desc = "Decrease window height" })
 keymap.set("n", "<A-h>", "<C-w><", { desc = "Decrease window width" })
