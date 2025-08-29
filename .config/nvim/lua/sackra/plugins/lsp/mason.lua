@@ -28,8 +28,24 @@ return {
                 "helm_ls",
                 "pylsp",
                 "angularls",
+                "tailwindcss",
+                "cssls",
             },
             automatic_installation = true,
+            automatic_enable = {
+                exclude = {
+                    "clangd",
+                    "cmake",
+                    "ts_ls",
+                    "rust_analyzer",
+                    "lua_ls",
+                    "helm_ls",
+                    "pylsp",
+                    "angularls",
+                    "tailwindcss",
+                    "cssls",
+                }
+            }
         })
     end,
 }

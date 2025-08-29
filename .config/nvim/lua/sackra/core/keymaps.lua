@@ -45,3 +45,12 @@ keymap.set("n", "<leader>so", function()
     local initFile = vim.fn.stdpath("config") .. "/init.lua"
     vim.cmd.source(initFile)
 end, { desc = "Source init.lua" })
+
+keymap.set("n", "<C-q>", ":q<CR>", { desc = "Quit" })
+
+keymap.set("n", "<A-k>", "<C-w>+", { desc = "Increase window height" })
+keymap.set("n", "<A-j>", "<C-w>-", { desc = "Decrease window height" })
+keymap.set("n", "<A-h>", "<C-w><", { desc = "Decrease window width" })
+keymap.set("n", "<A-l>", "<C-w>>", { desc = "Increase window width" })
+
+keymap.set("t", "<C-Esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })

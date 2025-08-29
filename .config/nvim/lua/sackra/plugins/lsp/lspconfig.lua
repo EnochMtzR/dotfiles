@@ -98,6 +98,11 @@ return {
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
+        capabilities.textDocument.foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+        }
+
         local signs = { Error = "⊗", Warn = "⚠", Hint = "🗲", Info = "🛈" }
 
         lspconfig["clangd"].setup({
@@ -118,6 +123,26 @@ return {
         lspconfig["angularls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+        })
+
+        lspconfig["tailwindcss"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+                tailwindCSS = {
+                    experimental = {
+                        classRegex = {
+                            { "\\w*class:\\s*([^,}]*)[,}]",     "['\"`]([^'\"`]*).*?['\"`]" },
+                            { "\\w*ngClass:\\s*([^,}]*)[,}]",   "['\"`]([^'\"`]*).*?['\"`]" },
+                            { "\\w*classList.add([^);]*)[);]",  "['\"`]([^'\"`]*).*?['\"`]" },
+                            { "\\w*[tT]wStyles\\s*=([^;]*);",   "['\"`]([^'\"`]*).*?['\"`]" },
+                            { "\\w*[vV]ariants([^;]*);",        "['\"`]([^'\"`]*).*?['\"`]" },
+                            { "\\w*[aA]nimation([^;,}]*)[,;}]", "['\"`]([^'\"`]*).*?['\"`]" },
+                            { "\\w*[tT]wSize([^;,}]*)[,;}]",    "['\"`]([^'\"`]*).*?['\"`]" },
+                        }
+                    }
+                }
+            }
         })
 
         --lspconfig["gopls"].setup({
@@ -164,6 +189,26 @@ return {
         lspconfig["cssls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+                css = {
+                    validate = true,
+                    lint = {
+                        unknownAtRules = "ignore",
+                    },
+                },
+                scss = {
+                    validate = true,
+                    lint = {
+                        unknownAtRules = "ignore",
+                    },
+                },
+                less = {
+                    validate = true,
+                    lint = {
+                        unknownAtRules = "ignore",
+                    },
+                },
+            },
         })
 
         lspconfig["bashls"].setup({
