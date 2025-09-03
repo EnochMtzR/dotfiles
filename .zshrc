@@ -138,34 +138,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-# Load Angular CLI autocompletion.
-# source <(ng completion script)
-
-# Created by `pipx` on 2023-06-21 15:57:23
-    export PATH="$PATH:/home/$(whoami)/.local/bin:/Users/$(whoami)/.local/bin:/usr/local/go/bin:/home/sackra/go/bin"
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # key bindings 
-bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^w "tmux-windowizer\n"
+bindkey -s ^f ". go-to\n"
 
-# Add opt to path
-
-for dir in $(find /opt -type d); do
-  PATH="$dir:$PATH"
-done
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/joseenocmartinezrojas/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-# Add libpq to path
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
-# Other libpq necessary exports
-export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 
 

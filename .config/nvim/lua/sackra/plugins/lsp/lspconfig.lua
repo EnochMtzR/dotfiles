@@ -10,11 +10,27 @@ return {
 
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+        local toggle_lsp_utils = require("sackra.plugins.lsp.utils.toggle-lsp")
+
         local keymap = vim.keymap
 
         local opts = { noremap = true, silent = true }
-        local on_attach = function(clent, bufnr)
+
+        local function should_attach(client, bufnr)
+            return not toggle_lsp_utils.is_manually_detached(client.name, bufnr)
+        end
+
+        local on_attach = function(client, bufnr)
+            -- Check if this LSP was manually detached for this buffer
+            print(client.name .. " attached to buffer " .. bufnr)
+            if not should_attach(client, bufnr) then
+                vim.lsp.buf_detach_client(bufnr, client.id)
+                return
+            end
+
             opts.buffer = bufnr
+
+            keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", opts)
 
             opts.desc = "Show LSP references"
             keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
@@ -108,6 +124,16 @@ return {
         lspconfig["clangd"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+        })
+
+        lspconfig["asm_lsp"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = { "asm-lsp" },
+            filetypes = { "asm", "s", "S" },
+            root_dir = lspconfig.util.root_pattern(".asm-lsp.toml", "Makefile", ".git"),
+            init_options = {},
+            settings = {},
         })
 
         lspconfig["cmake"].setup({

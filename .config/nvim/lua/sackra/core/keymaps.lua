@@ -59,3 +59,6 @@ keymap.set("n", "<A-h>", "<C-w><", { desc = "Decrease window width" })
 keymap.set("n", "<A-l>", "<C-w>>", { desc = "Increase window width" })
 
 keymap.set("t", "<C-Esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
+
+-- LSP keybindings that should be available globally
+keymap.set("n", "<leader>lt", "<cmd>ToggleLSP<CR>", { desc = "Toggle LSP clients" })

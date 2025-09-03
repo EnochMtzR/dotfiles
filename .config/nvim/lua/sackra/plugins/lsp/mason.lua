@@ -35,6 +35,8 @@ return {
             automatic_enable = {
                 exclude = {
                     "clangd",
+                    "copilot",
+                    "asm_lsp",
                     "cmake",
                     "ts_ls",
                     "rust_analyzer",
