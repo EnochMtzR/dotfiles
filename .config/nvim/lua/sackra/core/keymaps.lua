@@ -28,7 +28,7 @@ keymap.set("n", "N", "Nzzzv", { desc = "keep search selection in the middle when
 
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { silent = true, desc = "Open tmux sessionizer" })
 keymap.set("n", "<leader>w", "<cmd>silent !tmux neww tmux-windowizer<CR>",
-    { silent = true, desc = "Open tmux windowizer" })
+  { silent = true, desc = "Open tmux windowizer" })
 
 keymap.set("n", "<leader>x", "<cmd>silent !chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
@@ -40,18 +40,18 @@ keymap.set("n", "<C-k>", "<cmd>cprev<CR>", { desc = "Next quickfix" })
 keymap.set("n", "Q", "<nop>")
 
 keymap.set("n", "<leader>so", function()
-    print("Sourcing init.lua")
+  print("Sourcing init.lua")
 
-    local initFile = vim.fn.stdpath("config") .. "/init.lua"
-    vim.cmd.source(initFile)
+  local initFile = vim.fn.stdpath("config") .. "/init.lua"
+  vim.cmd.source(initFile)
 end, { desc = "Source init.lua" })
 
 keymap.set("n", "<C-q>", ":bd!<CR>", { desc = "Quit" })
 
-keymap.set("n", "<C-A-k>", "<cmd>wincmd k<CR>", { desc = "Move to upper window" })
-keymap.set("n", "<C-A-j>", "<cmd>wincmd j<CR>", { desc = "Move to lower window" })
-keymap.set("n", "<C-A-h>", "<cmd>wincmd h<CR>", { desc = "Move to left window" })
-keymap.set("n", "<C-A-l>", "<cmd>wincmd l<CR>", { desc = "Move to right window" })
+keymap.set("n", "<C-k>", "<cmd>wincmd k<CR>", { desc = "Move to upper window" })
+keymap.set("n", "<C-j>", "<cmd>wincmd j<CR>", { desc = "Move to lower window" })
+keymap.set("n", "<C-h>", "<cmd>wincmd h<CR>", { desc = "Move to left window" })
+keymap.set("n", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Move to right window" })
 
 keymap.set("n", "<A-k>", "<C-w>+", { desc = "Increase window height" })
 keymap.set("n", "<A-j>", "<C-w>-", { desc = "Decrease window height" })
