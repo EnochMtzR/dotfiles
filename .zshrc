@@ -131,6 +131,8 @@ alias gc="git commit"
 alias gcm="git commit -m"
 alias grmc="git rm --cached"
 
+alias gdb="/usr/local/bin/gdb"
+
 # alias set-deel-codeArtifact-auth-token-for-shared-account="export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain npm --domain-owner 974360507615 --profile shared --region eu-west-1 --query authorizationToken --output text`"
 
 export NVM_DIR="$HOME/.nvm"
