@@ -1,6 +1,6 @@
 local dap = require('dap')
 
-function setOutputRadix(radix)
+local function setOutputRadix(radix)
   local session = dap.session()
   if not session then
     print("No active DAP session")
