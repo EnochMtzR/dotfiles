@@ -148,12 +148,12 @@ bindkey -s ^f ". go-to\n"
 
 
 
-export PYENV_ROOT="$HOME/.pyenv"
+#export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+#eval "$(pyenv init --path)"
+#eval "$(pyenv init -)"
 
 # Fix for Ghostty graphics driver incompatibility
 export __EGL_VENDOR_LIBRARY_FILENAMES="/usr/lib/x86_64-linux-gnu/libEGL_nvidia.so.0"

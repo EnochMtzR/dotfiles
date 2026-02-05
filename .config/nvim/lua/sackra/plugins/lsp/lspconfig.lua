@@ -6,7 +6,7 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
-    local lspconfig = require("lspconfig")
+    local lspconfig = vim.lsp.config
 
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -121,13 +121,13 @@ return {
 
     local signs = { Error = "⊗", Warn = "⚠", Hint = "🗲", Info = "🛈" }
 
-    lspconfig["clangd"].setup({
+    lspconfig["clangd"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-      root_dir = lspconfig.util.root_pattern("Makefile", ".git"),
-    })
+      root_dir = vim.fs.root("Makefile", ".git"),
+    }
 
-    lspconfig["asm_lsp"].setup({
+    lspconfig["asm_lsp"] = {
       capabilities = capabilities,
       on_attach = on_attach,
       cmd = { "asm-lsp" },
@@ -135,24 +135,24 @@ return {
       root_dir = lspconfig.util.root_pattern(".asm-lsp.toml", "Makefile", ".git"),
       init_options = {},
       settings = {},
-    })
+    }
 
-    lspconfig["cmake"].setup({
+    lspconfig["cmake"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
-    lspconfig["ts_ls"].setup({
+    lspconfig["ts_ls"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
-    lspconfig["angularls"].setup({
+    lspconfig["angularls"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
-    lspconfig["tailwindcss"].setup({
+    lspconfig["tailwindcss"] = {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -170,9 +170,9 @@ return {
           }
         }
       }
-    })
+    }
 
-    lspconfig["gopls"].setup({
+    lspconfig["gopls"] = {
       capabilities = capabilities,
       on_attach = on_attach,
       cmd = { "gopls" },
@@ -186,34 +186,34 @@ return {
           staticcheck = true,
         },
       },
-    })
+    }
 
-    lspconfig["rust_analyzer"].setup({
+    lspconfig["rust_analyzer"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
-    lspconfig["helm_ls"].setup({
+    lspconfig["helm_ls"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
-    lspconfig["pylsp"].setup({
+    lspconfig["pylsp"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
-    lspconfig["html"].setup({
+    lspconfig["html"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
-    lspconfig["emmet_language_server"].setup({
+    lspconfig["emmet_language_server"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
-    lspconfig["cssls"].setup({
+    lspconfig["cssls"] = {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -236,12 +236,12 @@ return {
           },
         },
       },
-    })
+    }
 
-    lspconfig["bashls"].setup({
+    lspconfig["bashls"] = {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
+    }
 
     require("roslyn").setup({
       log_level = "info",
@@ -250,7 +250,7 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig["lua_ls"].setup({
+    lspconfig["lua_ls"] = {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -266,6 +266,6 @@ return {
           },
         },
       },
-    })
+    }
   end,
 }
