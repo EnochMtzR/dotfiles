@@ -15,11 +15,13 @@ vim.keymap.set("n", "<leader>ft", ":ToggleAutoFormat<CR>", { desc = "Toggle Auto
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = augroup,
-  callback = function()
+  pattern = "*",
+  callback = function(args)
     if not AutoFormatEnabled then
       return
     end
 
-    vim.lsp.buf.format()
+    print("formatting...")
+    require("conform").format({ bufnr = args.buf })
   end,
 })
