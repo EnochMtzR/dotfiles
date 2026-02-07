@@ -14,11 +14,17 @@ return {
 
 		local opts = { noremap = true, silent = true }
 
+		local lsp_group = vim.api.nvim_create_augroup("LspMappings", { clear = true })
+
 		local function should_attach(client, bufnr)
 			return not toggle_lsp_utils.is_manually_detached(client.name, bufnr)
 		end
 
-		local on_attach = function(client, bufnr)
+		local on_attach = function(args)
+			local client =
+				assert(vim.lsp.get_client_by_id(args.data.client_id), "No client ID provided from lsp attach")
+			local bufnr = args.buf
+			--
 			-- Check if this LSP was manually detached for this buffer
 			print(client.name .. " attached to buffer " .. bufnr)
 			if not should_attach(client, bufnr) then
@@ -108,6 +114,11 @@ return {
 			keymap.set("n", "<leader>rlsp", ":LspRestart<CR>", opts)
 		end
 
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = lsp_group,
+			callback = on_attach,
+		})
+
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		capabilities.textDocument.foldingRange = {
@@ -119,13 +130,11 @@ return {
 
 		vim.lsp.enable("clangd", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 			root_dir = vim.fs.root("Makefile", ".git"),
 		})
 
 		vim.lsp.enable("asm_lsp", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 			cmd = { "asm-lsp" },
 			filetypes = { "asm", "s", "S" },
 			root_dir = vim.fs.root(".asm-lsp.toml", "Makefile", ".git"),
@@ -135,22 +144,22 @@ return {
 
 		vim.lsp.enable("cmake", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		vim.lsp.enable("ts_ls", {
 			capabilities = capabilities,
-			on_attach = on_attach,
+		})
+
+		vim.lsp.enable("eslint", {
+			capabilities = capabilities,
 		})
 
 		vim.lsp.enable("angularls", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		vim.lsp.enable("tailwindcss", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 			settings = {
 				tailwindCSS = {
 					experimental = {
@@ -170,7 +179,6 @@ return {
 
 		vim.lsp.enable("gopls", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 			cmd = { "gopls" },
 			filetypes = { "go", "gomod", "gowork", "gotmpl" },
 			root_dir = vim.fs.root("go.work", "go.mod", ".git"),
@@ -186,32 +194,26 @@ return {
 
 		vim.lsp.enable("rust_analyzer", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		vim.lsp.enable("helm_ls", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		vim.lsp.enable("pylsp", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		vim.lsp.enable("html", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		vim.lsp.enable("emmet_language_server", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		vim.lsp.enable("cssls", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 			settings = {
 				css = {
 					validate = true,
@@ -236,19 +238,16 @@ return {
 
 		vim.lsp.enable("bashls", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		require("roslyn").setup({
 			log_level = "info",
 			dotnet_cmd = "dotnet",
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		vim.lsp.enable("lua_ls", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 			settings = {
 				Lua = {
 					diagnostics = {

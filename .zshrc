@@ -151,6 +151,7 @@ bindkey -s ^f ". go-to\n"
 #export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 
 #eval "$(pyenv init --path)"
 #eval "$(pyenv init -)"
@@ -158,3 +159,10 @@ export PATH=$PATH:/usr/local/go/bin
 # Fix for Ghostty graphics driver incompatibility
 export __EGL_VENDOR_LIBRARY_FILENAMES="/usr/lib/x86_64-linux-gnu/libEGL_nvidia.so.0"
 export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
+
+# bun completions
+[ -s "/home/sackra/.bun/_bun" ] && source "/home/sackra/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
